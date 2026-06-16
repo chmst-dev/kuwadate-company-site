@@ -149,6 +149,7 @@ const fields = [
   {
     id: 'hojoudata',
     orgName: 'hojoudata合同会社',
+    url: 'https://www.hojoudata.jp/',
     tag: '自社活動',
     domain: '農業・地域・アグリテック',
     description:
@@ -157,6 +158,7 @@ const fields = [
   {
     id: 'ontherice',
     orgName: '一般社団法人オンザライス',
+    url: 'https://www.ontherice.net/',
     tag: '自社活動',
     domain: '米・食・地域文化',
     description:
@@ -165,6 +167,7 @@ const fields = [
   {
     id: 'hanamii',
     orgName: 'HANAMII株式会社',
+    url: 'https://hanamii.jp/',
     tag: '参画・協業先',
     domain: '仮説検証・プロトタイピング・アプリ開発',
     description:
@@ -173,6 +176,7 @@ const fields = [
   {
     id: 'hanataba',
     orgName: '株式会社HANATABA',
+    url: 'https://hanataber.co.jp/',
     tag: '参画・協業先',
     domain: '事業開発・提案・実行支援',
     description:
@@ -181,6 +185,7 @@ const fields = [
   {
     id: 'policy-company',
     orgName: '明治大学ポリシーカンパニー',
+    url: null,
     tag: '研究・実践活動',
     domain: '公共政策・官民連携・政策実装',
     description:
@@ -206,7 +211,18 @@ function FieldsSection() {
           {fields.map((f) => (
             <div className="field-item" key={f.id} id={`field-${f.id}`}>
               <div className="field-item__org">
-                <div className="field-item__org-name">{f.orgName}</div>
+                {f.url ? (
+                  <a
+                    href={f.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="field-item__org-name field-item__org-name--link"
+                  >
+                    {f.orgName} <span className="field-item__org-link-icon" aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <div className="field-item__org-name">{f.orgName}</div>
+                )}
                 <span className="field-item__org-tag">{f.tag}</span>
               </div>
               <div className="field-item__content">
@@ -243,6 +259,7 @@ function ProfileSection() {
       <div className="container profile__inner">
         <p className="section__eyebrow fade-in">Profile</p>
         <h2 className="section__title fade-in fade-in-delay-1">越智聖人</h2>
+        <p className="profile__role fade-in fade-in-delay-1">くわだてカンパニー 主宰</p>
         <div className="profile__layout">
           <div className="profile__avatar fade-in fade-in-delay-2" aria-hidden="true">越</div>
           <div className="fade-in fade-in-delay-3">
