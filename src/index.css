@@ -455,6 +455,228 @@ a {
 }
 
 /* ===========================
+   Use Cases セクション
+   =========================== */
+.use-cases {
+  background-color: var(--color-bg-alt);
+}
+
+.use-cases .section__lead {
+  margin-bottom: 48px;
+}
+
+.use-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.use-case-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.use-case-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.use-case-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent-pale);
+}
+
+.use-case-card:hover::after {
+  opacity: 1;
+}
+
+.use-case-card__area {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: var(--color-accent-pale);
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.use-case-card__emoji {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.use-case-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.use-case-card__body {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.85;
+  flex: 1;
+}
+
+.use-case-card__examples {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.use-case-card__examples li {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.use-case-card__examples li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-light);
+  font-size: 0.78rem;
+}
+
+/* ===========================
+   Consultation セクション
+   =========================== */
+.consultation {
+  background-color: var(--color-hero-bg);
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.consultation::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(90, 155, 138, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.consultation__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.consultation__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-hero-text);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.consultation__lead {
+  font-size: 1rem;
+  color: rgba(245, 242, 236, 0.72);
+  line-height: 2;
+  margin-bottom: 32px;
+}
+
+.consultation__sub {
+  font-size: 0.88rem;
+  color: var(--color-accent-light);
+  font-weight: 500;
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+
+.consultation__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 36px;
+  text-align: left;
+}
+
+.consultation__list li {
+  font-size: 0.95rem;
+  color: rgba(245, 242, 236, 0.78);
+  padding: 12px 16px 12px 40px;
+  background: rgba(90, 155, 138, 0.08);
+  border: 1px solid rgba(90, 155, 138, 0.2);
+  border-radius: var(--radius-md);
+  position: relative;
+  line-height: 1.7;
+  transition: background-color var(--transition);
+}
+
+.consultation__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 14px;
+  color: var(--color-accent-light);
+  font-size: 0.85rem;
+  top: 13px;
+}
+
+.consultation__list li:hover {
+  background: rgba(90, 155, 138, 0.14);
+}
+
+.consultation__cta-lead {
+  font-size: 0.92rem;
+  color: rgba(245, 242, 236, 0.55);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.btn--consultation {
+  background: var(--color-accent-light);
+  color: #fff;
+  padding: 16px 36px;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(90, 155, 138, 0.35);
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn--consultation:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(90, 155, 138, 0.45);
+}
+
+/* ===========================
    Fields セクション
    =========================== */
 .fields {
@@ -829,6 +1051,24 @@ a {
 
   .contact__tags {
     gap: 8px;
+  }
+
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .use-case-card {
+    padding: 22px;
+  }
+
+  .consultation__inner {
+    text-align: left;
+  }
+
+  .btn--consultation {
+    width: 100%;
+    justify-content: center;
   }
 }
 
