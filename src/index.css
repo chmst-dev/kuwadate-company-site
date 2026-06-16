@@ -465,7 +465,7 @@ a {
 .fields__note {
   font-size: 0.82rem;
   color: var(--color-text-muted);
-  margin-top: 12px;
+  margin-top: 24px;
   padding: 10px 16px;
   background: var(--color-bg-alt);
   border-radius: var(--radius-sm);

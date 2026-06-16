@@ -202,11 +202,8 @@ function FieldsSection() {
         <div className="container" style={{ padding: 0 }}>
           <p className="section__eyebrow fade-in">Practice Fields</p>
           <h2 className="section__title fade-in fade-in-delay-1">実践フィールド</h2>
-          <p className="fields__note fade-in fade-in-delay-2">
-            ※「自社活動」はくわだてカンパニーが直接運営・主導する活動です。「協力会社」「協力機関」は、それぞれ独立した組織であり、くわだてカンパニーとの協力・連携関係のもとで活動をともにしています。くわだてカンパニーの所有・傘下組織ではありません。
-          </p>
         </div>
-        <div className="fields-list fade-in fade-in-delay-3">
+        <div className="fields-list fade-in fade-in-delay-2">
           {fields.map((f) => (
             <div className="field-item" key={f.id} id={`field-${f.id}`}>
               <div className="field-item__org">
@@ -231,6 +228,9 @@ function FieldsSection() {
             </div>
           ))}
         </div>
+        <p className="fields__note fade-in">
+          ※「自社活動」はくわだてカンパニーが直接運営・主導する活動です。「協力会社」「協力機関」は、それぞれ独立した組織であり、くわだてカンパニーとの協力・連携関係のもとで活動をともにしています。くわだてカンパニーの所有・傘下組織ではありません。
+        </p>
       </div>
     </section>
   )
