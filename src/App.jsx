@@ -168,7 +168,7 @@ const fields = [
     id: 'hanamii',
     orgName: 'HANAMII株式会社',
     url: 'https://hanamii.jp/',
-    tag: '参画・協業先',
+    tag: '協力会社',
     domain: '仮説検証・プロトタイピング・アプリ開発',
     description:
       '仮説検証・プロトタイピング・アプリ開発支援に関する協業・参画領域。現場の人が自ら課題をアプリ化し、試しながら改善する取り組みを推進。',
@@ -177,7 +177,7 @@ const fields = [
     id: 'hanataba',
     orgName: '株式会社HANATABA',
     url: 'https://hanataber.co.jp/',
-    tag: '参画・協業先',
+    tag: '協力会社',
     domain: '事業開発・提案・実行支援',
     description:
       '事業開発・提案活動・実行支援に関する参画領域。新規事業や業務改善における企画整理、提案、実装支援を行う。',
@@ -186,7 +186,7 @@ const fields = [
     id: 'policy-company',
     orgName: '明治大学ポリシーカンパニー',
     url: null,
-    tag: '研究・実践活動',
+    tag: '協力機関',
     domain: '公共政策・官民連携・政策実装',
     description:
       '公共政策・官民連携・政策実装に関する研究・実践活動。EBPM、Civic Tech、参加型行政、地域課題解決などをテーマに、研究と実践を接続する。',
@@ -203,8 +203,7 @@ function FieldsSection() {
           <p className="section__eyebrow fade-in">Practice Fields</p>
           <h2 className="section__title fade-in fade-in-delay-1">実践フィールド</h2>
           <p className="fields__note fade-in fade-in-delay-2">
-            ※ 以下は、くわだてカンパニーの活動領域として関わっているフィールドです。
-            HANAMII株式会社・株式会社HANATABA・明治大学ポリシーカンパニーはくわだてカンパニーとは独立した組織であり、参画・協業の形で関係しています。
+            ※「自社活動」はくわだてカンパニーが直接運営・主導する活動です。「協力会社」「協力機関」は、それぞれ独立した組織であり、くわだてカンパニーとの協力・連携関係のもとで活動をともにしています。くわだてカンパニーの所有・傘下組織ではありません。
           </p>
         </div>
         <div className="fields-list fade-in fade-in-delay-3">
