@@ -65,7 +65,7 @@ function ConceptSection() {
       <div className="container">
         <p className="section__eyebrow fade-in">Our Concept</p>
         <h2 className="section__title fade-in fade-in-delay-1">
-          プロトタイピングを、<br />一部の人の特権から、<br />社会の共通技能へ。
+          プロトタイピングを、<br />専門家だけのものから、<br />誰もが使える技能へ。
         </h2>
         <div className="concept__layout">
           <div className="concept__text fade-in fade-in-delay-2">
