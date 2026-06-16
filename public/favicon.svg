@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="16" fill="#1e2e2a"/>
-  <text y=".9em" font-size="80" x="10" fill="#5a9b8a" font-family="serif" font-weight="bold">く</text>
+  <rect width="100" height="100" rx="20" fill="#1e2e2a"/>
+  <!-- 太い角丸の線で「く」の形を描く -->
+  <path d="M 62,28 L 38,50 L 62,72" 
+        fill="none" 
+        stroke="#5a9b8a" 
+        stroke-width="14" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
 </svg>
