@@ -261,7 +261,9 @@ function ProfileSection() {
         <h2 className="section__title fade-in fade-in-delay-1">越智聖人</h2>
         <p className="profile__role fade-in fade-in-delay-1">くわだてカンパニー 主宰</p>
         <div className="profile__layout">
-          <div className="profile__avatar fade-in fade-in-delay-2" aria-hidden="true">越</div>
+          <div className="profile__avatar fade-in fade-in-delay-2">
+            <img src="/profile.png" alt="越智聖人" />
+          </div>
           <div className="fade-in fade-in-delay-3">
             <div className="profile__text">
               <p>

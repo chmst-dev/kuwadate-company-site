@@ -624,15 +624,18 @@ a {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border: 3px solid rgba(90, 155, 138, 0.4);
+}
+
+.profile__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 .profile__text p {
@@ -813,7 +816,6 @@ a {
   .profile__avatar {
     width: 120px;
     height: 120px;
-    font-size: 2rem;
   }
 
   .contact__tags {
