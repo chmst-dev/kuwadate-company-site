@@ -505,7 +505,16 @@ a {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--color-text-primary);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+
+/* 役職 */
+.field-item__org-role {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-bottom: 8px;
   line-height: 1.4;
 }
 

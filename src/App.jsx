@@ -149,6 +149,7 @@ const fields = [
   {
     id: 'hojoudata',
     orgName: 'hojoudata合同会社',
+    role: '代表社員',
     url: 'https://www.hojoudata.jp/',
     tag: '自社活動',
     domain: '農業・地域・アグリテック',
@@ -158,6 +159,7 @@ const fields = [
   {
     id: 'ontherice',
     orgName: '一般社団法人オンザライス',
+    role: '共同代表理事',
     url: 'https://www.ontherice.net/',
     tag: '自社活動',
     domain: '米・食・地域文化',
@@ -167,6 +169,7 @@ const fields = [
   {
     id: 'hanamii',
     orgName: 'HANAMII株式会社',
+    role: '事業開発',
     url: 'https://hanamii.jp/',
     tag: '協力会社',
     domain: '仮説検証・プロトタイピング・アプリ開発',
@@ -176,6 +179,7 @@ const fields = [
   {
     id: 'hanataba',
     orgName: '株式会社HANATABA',
+    role: '事業開発',
     url: 'https://hanataber.co.jp/',
     tag: '協力会社',
     domain: '事業開発・提案・実行支援',
@@ -185,6 +189,7 @@ const fields = [
   {
     id: 'policy-company',
     orgName: '明治大学ポリシーカンパニー',
+    role: '客員研究員',
     url: null,
     tag: '協力機関',
     domain: '公共政策・官民連携・政策実装',
@@ -219,6 +224,7 @@ function FieldsSection() {
                 ) : (
                   <div className="field-item__org-name">{f.orgName}</div>
                 )}
+                <div className="field-item__org-role">{f.role}</div>
                 <span className="field-item__org-tag">{f.tag}</span>
               </div>
               <div className="field-item__content">
