@@ -337,7 +337,8 @@ a {
    =========================== */
 .concept {
   padding: var(--section-padding);
-  background-color: var(--color-surface);
+  /* イラストの背景色（クリーム）に合わせてセクション背景を統一 */
+  background-color: var(--color-bg);
 }
 
 .concept__layout {
@@ -381,31 +382,26 @@ a {
 
 /* ブランドイラスト */
 .concept__illustration {
-  margin-top: 72px;
-  /* セクションの左右パディングを相殺して全幅に */
-  width: 100%;
-  overflow: hidden;
-  line-height: 0; /* 画像下の隙間を除去 */
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
 }
 
 .concept__illustration-img {
+  /* PCは適切なサイズに抑えて浮きを防ぐ */
+  max-width: 760px;
   width: 100%;
   height: auto;
   display: block;
-  /* イラストの背景色(クリーム)がサイトのサーフェスカラーとなじむよう軽く調整 */
-  mix-blend-mode: multiply;
-  opacity: 0.96;
-  transition: opacity 0.4s ease;
+  /* 背景色をサイトのクリームに合わせているため mix-blend-mode は不要 */
+  border-radius: var(--radius-lg);
+  opacity: 0.97;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .concept__illustration-img:hover {
   opacity: 1;
-}
-
-@media (max-width: 768px) {
-  .concept__illustration {
-    margin-top: 48px;
-  }
+  transform: scale(1.01);
 }
 
 /* ===========================
@@ -1043,6 +1039,16 @@ a {
   .concept__layout {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .concept__illustration {
+    margin-top: 40px;
+  }
+
+  .concept__illustration-img {
+    /* スマホは左右に余白をもたせて小さめに表示 */
+    max-width: 92%;
+    border-radius: var(--radius-md);
   }
 
   .cards-grid {
