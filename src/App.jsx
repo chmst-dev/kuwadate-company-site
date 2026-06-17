@@ -36,7 +36,7 @@ function HeroSection() {
       <div className="hero__inner">
         <p className="hero__brand">Kuwadate Company</p>
         <h1 className="hero__main-title">
-          プロトタイピングの<br />公共化
+          プロトタイピングの公共化
         </h1>
         <p className="hero__sub-title">企てを、仲間と試せるかたちに。</p>
         <div className="hero__accent-bar" />
