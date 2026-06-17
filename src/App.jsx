@@ -87,6 +87,14 @@ function ConceptSection() {
           </div>
         </div>
       </div>
+      {/* ブランドイラスト：対話→プロトタイプへの流れを表現 */}
+      <div className="concept__illustration fade-in fade-in-delay-4" aria-hidden="true">
+        <img
+          src="/illustration.png"
+          alt="人々が対話し、アイデアをプロトタイプへと育てていく様子のイラスト"
+          className="concept__illustration-img"
+        />
+      </div>
     </section>
   )
 }

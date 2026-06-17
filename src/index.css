@@ -379,6 +379,35 @@ a {
   transform: translateX(4px);
 }
 
+/* ブランドイラスト */
+.concept__illustration {
+  margin-top: 72px;
+  /* セクションの左右パディングを相殺して全幅に */
+  width: 100%;
+  overflow: hidden;
+  line-height: 0; /* 画像下の隙間を除去 */
+}
+
+.concept__illustration-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* イラストの背景色(クリーム)がサイトのサーフェスカラーとなじむよう軽く調整 */
+  mix-blend-mode: multiply;
+  opacity: 0.96;
+  transition: opacity 0.4s ease;
+}
+
+.concept__illustration-img:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .concept__illustration {
+    margin-top: 48px;
+  }
+}
+
 /* ===========================
    What We Do セクション
    =========================== */
