@@ -20,6 +20,7 @@ function Nav() {
         <li><a href="#what-we-do" id="nav-what">やっていること</a></li>
         <li><a href="#use-cases" id="nav-cases">支援事例</a></li>
         <li><a href="#fields" id="nav-fields">実践フィールド</a></li>
+        <li><a href="#note" id="nav-note">note</a></li>
         <li><a href="#profile" id="nav-profile">プロフィール</a></li>
         <li><a href="#contact" id="nav-contact">相談する</a></li>
       </ul>
@@ -433,6 +434,165 @@ function ProfileSection() {
 }
 
 /* ===========================
+   Note セクション
+   =========================== */
+// 開発時: Vite proxy /api/rss → note.com/masatochi/rss
+// 本番時: 同一オリジン or サーバーサイドプロキシ
+const RSS_ENDPOINT = '/api/rss'
+
+function NoteSection() {
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  useFadeIn()
+
+  useEffect(() => {
+    fetch(RSS_ENDPOINT)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        return res.text()
+      })
+      .then((text) => {
+        const parser = new DOMParser()
+        const xml = parser.parseFromString(text, 'text/xml')
+        const parseError = xml.querySelector('parsererror')
+        if (parseError) throw new Error('XML parse error')
+
+        const items = Array.from(xml.querySelectorAll('item'))
+        const parsed = items.map((item) => {
+          // media:thumbnail は namespace aware で取得
+          const thumbEl =
+            item.getElementsByTagNameNS('http://search.yahoo.com/mrss/', 'thumbnail')[0]
+          const thumbUrl =
+            thumbEl?.getAttribute('url') || thumbEl?.textContent || null
+
+          const descRaw = item.querySelector('description')?.textContent ?? ''
+          const descDoc = new DOMParser().parseFromString(descRaw, 'text/html')
+          const descText = descDoc.body.textContent
+            ?.trim()
+            .replace(/続きをみる.*$/, '')
+            .trim() ?? ''
+
+          return {
+            title: item.querySelector('title')?.textContent ?? '',
+            link: item.querySelector('link')?.textContent?.trim() ?? '',
+            pubDate: item.querySelector('pubDate')?.textContent ?? '',
+            thumbnail: thumbUrl,
+            description: descText,
+          }
+        })
+        setPosts(parsed)
+      })
+      .catch((err) => {
+        console.error('[NoteSection] RSS fetch error:', err)
+        setError('記事の読み込みに失敗しました。')
+      })
+      .finally(() => setLoading(false))
+  }, [])
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return ''
+    const d = new Date(dateStr)
+    return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
+  }
+
+  // posts が読み込まれた後に新しく追加されたカードを observe する
+  useEffect(() => {
+    if (posts.length === 0) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible')
+        })
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    )
+    const cards = document.querySelectorAll('.note-card.fade-in:not(.visible)')
+    cards.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [posts])
+
+  return (
+    <section className="note-section section" id="note" aria-label="くわだてや note">
+      <div className="container">
+        <p className="section__eyebrow fade-in">Note</p>
+        <div className="note-section__header fade-in fade-in-delay-1">
+          <h2 className="section__title">くわだてや</h2>
+          <a
+            href="https://note.com/masatochi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="note-section__link-btn"
+            id="note-view-all"
+          >
+            noteを見る ↗
+          </a>
+        </div>
+        <p className="section__lead fade-in fade-in-delay-2" style={{ marginBottom: '48px' }}>
+          事業・行政・地域・農業・生成AIのあいだを行き来し、まだ形にならない企てを仮説検証できる形に整えています。
+        </p>
+
+        {loading && (
+          <div className="note-section__loading" aria-live="polite">
+            <div className="note-section__spinner" />
+            <p>記事を読み込み中…</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="note-section__error">
+            <p>{error}</p>
+            <a
+              href="https://note.com/masatochi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--primary"
+            >
+              noteを直接見る
+            </a>
+          </div>
+        )}
+
+        {!loading && !error && posts.length === 0 && (
+          <p className="note-section__empty">まだ記事がありません。</p>
+        )}
+
+        {!loading && posts.length > 0 && (
+          <div className="note-cards-grid">
+            {posts.map((post, i) => (
+              <a
+                key={post.link}
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`note-card fade-in fade-in-delay-${Math.min(i + 1, 4)}`}
+                id={`note-card-${i + 1}`}
+              >
+                {post.thumbnail && (
+                  <div className="note-card__thumb">
+                    <img src={post.thumbnail} alt={post.title} loading="lazy" />
+                  </div>
+                )}
+                <div className="note-card__body">
+                  <time className="note-card__date" dateTime={post.pubDate}>
+                    {formatDate(post.pubDate)}
+                  </time>
+                  <h3 className="note-card__title">{post.title}</h3>
+                  {post.description && (
+                    <p className="note-card__desc">{post.description}</p>
+                  )}
+                  <span className="note-card__cta">続きを読む ↗</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+/* ===========================
    Contact セクション
    =========================== */
 const contactTopics = [
@@ -526,6 +686,7 @@ function App() {
         <UseCasesSection />
         <ConsultationSection />
         <FieldsSection />
+        <NoteSection />
         <ProfileSection />
         <ContactSection />
       </main>
